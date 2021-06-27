@@ -39,8 +39,5 @@ namespace TestProject1
         {
             TestResults = new List<TestContext>();
         }
-
-
-
     }
 }

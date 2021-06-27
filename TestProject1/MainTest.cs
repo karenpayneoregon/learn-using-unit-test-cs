@@ -87,9 +87,7 @@ namespace TestProject1
         public void ExceptExample()
         {
             List<Customers> customersList1 = CustomerOperations.ReadCustomers().Take(3).ToList();
-
             List<Customers> customersList2 = CustomerOperations.ReadCustomers().Skip(2).Take(1).ToList();
-
             List<Customers> expected = CustomerOperations.ReadCustomers().Take(2).ToList();
 
             var results = customersList1.Except(customersList2, new CustomerIdContactIdCompare()).ToList();
@@ -111,7 +109,6 @@ namespace TestProject1
         public void GroupByExample1()
         {
             var customers = CustomerOperations.ReadCustomers();
-
             var stronglyGrouped = customers
                 .GroupBy((customer) => customer.CountryIdentifier)
                 .Select((@group) => new CountryGrouped
@@ -123,6 +120,11 @@ namespace TestProject1
                 .OrderBy(countryGrouped => countryGrouped.CountryName)
                 .ToList();
 
+            /*
+             * Not part of a typical unit test method, here to show that
+             * a developer can inspect results after a test runs in the test
+             * output/result window
+             */
             foreach (var countryGroup in stronglyGrouped)
             {
                 Debug.WriteLine(countryGroup.CountryName);
@@ -148,18 +150,23 @@ namespace TestProject1
         public void CustomersGroupBy_CountryIdentifier()
         {
             var customers = CustomerOperations.ReadCustomers();
-
             var anonymousGrouped = customers
                 .GroupBy((customer) => customer.CountryIdentifier)
                 .Select((@group) => new
                 {
                     Count = @group.Count(),
                     List = @group.ToList(),
-                    CountryName = CustomerOperations.CountryList.FirstOrDefault(country => country.CountryIdentifier == @group.Key).Name
+                    CountryName = CustomerOperations.CountryList.FirstOrDefault(country => 
+                        country.CountryIdentifier == @group.Key).Name
                 })
                 .OrderBy(countryGrouped => countryGrouped.CountryName)
                 .ToList();
 
+            /*
+             * Not part of a typical unit test method, here to show that
+             * a developer can inspect results after a test runs in the test
+             * output/result window
+             */
             foreach (var countryGroup in anonymousGrouped)
             {
                 Debug.WriteLine(countryGroup.CountryName);
