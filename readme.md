@@ -2,7 +2,7 @@
 
 This Visual Studio solution discuss the following along with hands on coding.
 
-- [x] Why to unit test and why developers tend to avoid testing
+- [x] Why developers tend to avoid testing and how to overcome
 - [x] Basics of unit test
 - [x] Test Explorer
 - [x] Differences in static, mocked data and real data
