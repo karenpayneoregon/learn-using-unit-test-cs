@@ -14,6 +14,7 @@ namespace SalesUnitTestProject
         /// and a specific country identifier.
         /// </summary>
         [TestMethod]
+        [Timeout(2500)]
         public void TestMethod1()
         {
             var saleDate = new DateTime(2021, 6, 25);

@@ -21,11 +21,11 @@ namespace TestProject1
         [TestTraits(Trait.QueryOperators)]
         public void Distinct_By_CompanyName()
         {
-            var customerList = CustomerOperations.ReadCustomers().Take(5).ToList();
+            List<Customers> customerList = CustomerOperations.ReadCustomers().Take(5).ToList();
 
             customerList[1].CompanyName = customerList[0].CompanyName;
 
-            var noDuplicateCustomers = customerList.Distinct(
+            IEnumerable<Customers> noDuplicateCustomers = customerList.Distinct(
                 Wrappers.CompanyNameEqualityComparer);
 
             Assert.IsTrue(noDuplicateCustomers.Count() == 4);
@@ -39,13 +39,13 @@ namespace TestProject1
         [TestTraits(Trait.QueryOperators)]
         public void Distinct_Identifier_CountryProperties()
         {
-            var customerList = CustomerOperations.ReadCustomers().Take(5).ToList();
+            List<Customers> customerList = CustomerOperations.ReadCustomers().Take(5).ToList();
 
             customerList[1].CustomerIdentifier = customerList[0].CustomerIdentifier;
             customerList[1].CountryNavigation = customerList[0].CountryNavigation;
 
 
-            var noDuplicateCustomers = customerList.Distinct(
+            IEnumerable<Customers> noDuplicateCustomers = customerList.Distinct(
                 new CustomerIdCountryNavigationComparer());
 
             Assert.IsTrue(noDuplicateCustomers.Count() == 4);
@@ -59,7 +59,7 @@ namespace TestProject1
         [TestTraits(Trait.QueryOperators)]
         public void EmptyAggregate_CompanyName()
         {
-            var customerList = CustomerOperations.ReadCustomers();
+            List<Customers> customerList = CustomerOperations.ReadCustomers();
 
             string[] names1 = customerList.Take(2).Select(customer => customer.CompanyName).ToArray();
             string[] names2 = customerList.Skip(2).Take(7).Select(customer => customer.CompanyName).ToArray();
@@ -106,10 +106,10 @@ namespace TestProject1
         /// </remarks>
         [TestMethod]
         [TestTraits(Trait.QueryOperators)]
-        public void GroupByExample1()
+        public void CustomersGroupByCountryIdentifierStrongTyped()
         {
-            var customers = CustomerOperations.ReadCustomers();
-            var stronglyGrouped = customers
+            List<Customers> customers = CustomerOperations.ReadCustomers();
+            List<CountryGrouped> stronglyGrouped = customers
                 .GroupBy((customer) => customer.CountryIdentifier)
                 .Select((@group) => new CountryGrouped
                 {
@@ -119,6 +119,7 @@ namespace TestProject1
                 })
                 .OrderBy(countryGrouped => countryGrouped.CountryName)
                 .ToList();
+
 
             /*
              * Not part of a typical unit test method, here to show that
@@ -137,6 +138,27 @@ namespace TestProject1
             Assert.IsTrue(stronglyGrouped.Count == 20);
         }
 
+        [TestMethod]
+        [TestTraits(Trait.QueryOperators)]
+        public void CreateJson_CustomersGroupByCountryIdentifier()
+        {
+            List<Customers> customers = CustomerOperations.ReadCustomers();
+            List<CountryGrouped> stronglyGrouped = customers
+                .GroupBy((customer) => customer.CountryIdentifier)
+                .Select((@group) => new CountryGrouped
+                {
+                    Count = @group.Count(),
+                    List = @group.ToList(),
+                    CountryName = CustomerOperations.CountryList.FirstOrDefault(country => country.CountryIdentifier == @group.Key).Name
+                })
+                .OrderBy(countryGrouped => countryGrouped.CountryName)
+                .ToList();
+
+            JsonOperations.Save(stronglyGrouped, "CustomerCountryGroup.json");
+
+        }
+
+
         /// <summary>
         /// Enumerable.GroupBy: Groups the elements of a sequence.
         /// Group Customers by Country
@@ -147,9 +169,9 @@ namespace TestProject1
         /// </remarks>
         [TestMethod]
         [TestTraits(Trait.QueryOperators)]
-        public void CustomersGroupBy_CountryIdentifier()
+        public void CustomersGroupByCountryIdentifierAnonymous()
         {
-            var customers = CustomerOperations.ReadCustomers();
+            List<Customers> customers = CustomerOperations.ReadCustomers();
             var anonymousGrouped = customers
                 .GroupBy((customer) => customer.CountryIdentifier)
                 .Select((@group) => new
