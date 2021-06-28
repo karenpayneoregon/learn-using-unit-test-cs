@@ -1,23 +1,27 @@
 # About
 
-This Visual Studio solution discuss
+This Visual Studio solution discuss the following along with hands on coding.
 
 - [x] Why to unit test and why developers tend to avoid testing
 - [x] Basics of unit test
-- [x] Differences in static, mocked data to real data
+- [x] Test Explorer
+- [x] Differences in static, mocked data and real data
+- [x] Entity Framework Core testing
 - [x] Project templating
-- [ ] Live unit testing VS Enterprise feature
+- [ ] Live unit testing VS *Enterprise feature*
 - [x] Mocking
 - [x] Fakes
-- [x] Frameworks
+- [x] Testing Frameworks
 
 
 # See also
 
 - [Testing tools](https://docs.microsoft.com/en-us/visualstudio/test/?view=vs-2019) in Visual Studio
-  - Unit test [basics](https://docs.microsoft.com/en-us/visualstudio/test/unit-test-basics?view=vs-2019)
-  - Isolate code under test with [Microsoft Fakes](http://example.com)
+  - Unit test **[basics](https://docs.microsoft.com/en-us/visualstudio/test/unit-test-basics?view=vs-2019)**
+  - **[Test Explorer](https://docs.microsoft.com/en-us/visualstudio/test/run-unit-tests-with-test-explorer?view=vs-2019)**
+  - Isolate code under test with [Microsoft Fakes](https://docs.microsoft.com/en-us/visualstudio/test/isolating-code-under-test-with-microsoft-fakes?view=vs-2019)
   - Create unit test method [stubs from code](https://docs.microsoft.com/en-us/visualstudio/test/create-unit-tests-menu?view=vs-2019)
+  - [Frameworks](https://docs.microsoft.com/en-us/visualstudio/test/install-third-party-unit-test-frameworks?view=vs-2019)
 - Visual Studio [productivity guide](https://docs.microsoft.com/en-us/visualstudio/ide/csharp-developer-productivity?view=vs-2019) for C# developers
 - TechNet Wiki [C# object comparisons basics](https://social.technet.microsoft.com/wiki/contents/articles/53309.c-object-comparisons-basics.aspx)
 - Custom project templates [repository](https://github.com/karenpayneoregon/vs2019-custom-project-templates)
