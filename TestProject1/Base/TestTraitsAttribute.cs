@@ -11,7 +11,16 @@ namespace TestProject1.Base
         /// Place holder 
         /// </summary>
         PlaceHolder,
-        QueryOperators
+        SqlRead,
+        /// <summary>
+        /// Newtonsoft test
+        /// </summary>
+        ToJson,
+        Distinct,
+        Aggregate,
+        Except,
+        GroupBy,
+        Generics
     }
     /// <summary>
     /// Declarative class for using Trait enum about for traits on test method.

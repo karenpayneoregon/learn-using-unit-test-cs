@@ -14,7 +14,7 @@ namespace TestProject1
     public partial class MainTest
     {
         /// <summary>
-        /// File name for test <see cref="CreateJson_CustomersGroupByCountryIdentifier"/>
+        /// File name for test <see cref="CreateJsonHardCoded_CustomersGroupByCountryIdentifier"/>
         /// </summary>
         public string CountryGroupFileName => "CustomerCountryGroup.json";
         
@@ -24,7 +24,7 @@ namespace TestProject1
         [TestInitialize]
         public void Initialization()
         {
-            if (TestContext.TestName == nameof(CreateJson_CustomersGroupByCountryIdentifier))
+            if (TestContext.TestName == nameof(CreateJsonHardCoded_CustomersGroupByCountryIdentifier) || TestContext.TestName == nameof(CreateJsonGeneric_CustomersGroupByCountryIdentifier))
             {
                 if (File.Exists(CountryGroupFileName))
                 {
