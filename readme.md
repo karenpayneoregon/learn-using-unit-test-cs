@@ -8,6 +8,7 @@ This Visual Studio solution discuss the following along with hands on coding.
 - [x] Differences in static, mocked data and real data
 - [x] Entity Framework Core testing
 - [x] Project templating
+- [x] Tips and tricks
 - [ ] Live unit testing VS *Enterprise feature*
 - [x] Mocking
 - [x] Fakes
