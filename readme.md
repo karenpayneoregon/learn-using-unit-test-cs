@@ -6,8 +6,10 @@ This Visual Studio solution discuss
 - [x] Basics of unit test
 - [x] Differences in static, mocked data to real data
 - [x] Project templating
+- [ ] Live unit testing VS Enterprise feature
 - [x] Mocking
 - [x] Fakes
+- [x] Frameworks
 
 
 # See also
@@ -25,5 +27,6 @@ This Visual Studio solution discuss
 - TechNet Wiki [Unit testing extension methods and validation](https://social.technet.microsoft.com/wiki/contents/articles/51706.c-unit-testing-extension-methods-and-validation.aspx)
 - TechNet Wiki [Different methods to display unit test](https://social.technet.microsoft.com/wiki/contents/articles/51303.visual-studio-different-methods-to-display-unit-test.aspx)
 
+</br>
 
 ![Unit Testing](assets/unitTesting.png)![Csharp Small](assets/csharpSmall.png)![Sql Server1](assets/sql-server1.png) ![Efcore](assets/efcore.png) ![Versions](assets/Versions.png)
