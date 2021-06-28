@@ -9,6 +9,7 @@ This Visual Studio solution discuss the following along with hands on coding.
 - [x] Entity Framework Core testing
 - [x] Project templating
 - [x] Tips and tricks
+- [x] TDD
 - [ ] Live unit testing VS *Enterprise feature*
 - [x] Mocking
 - [x] Fakes
