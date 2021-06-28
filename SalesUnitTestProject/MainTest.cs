@@ -1,6 +1,8 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using EntityFrameworkLibrary.Data;
+using EntityFrameworkLibrary.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SalesUnitTestProject.Base;
 
@@ -13,9 +15,14 @@ namespace SalesUnitTestProject
         /// Working with queries on dates, in this case looking for SaleDate greater than seven days ago
         /// and a specific country identifier.
         /// </summary>
+        /// <remarks>
+        /// Timeout attribute can be unpredictable thus commented out
+        /// * An average may be 1.5 seconds while other times over 2.5 dependent on the environment
+        /// </remarks>
         [TestMethod]
-        [Timeout(2500)]
-        public void TestMethod1()
+        //[Timeout(2500)]
+        [TestTraits(Trait.SalesQueries)]
+        public void SalesLastWeekByCountryCode()
         {
             var saleDate = new DateTime(2021, 6, 25);
             var shipCountry = 1;
@@ -25,7 +32,7 @@ namespace SalesUnitTestProject
             
             using var context = new DatabaseContext();
 
-            var results = context
+            List<Sales> results = context
                 .Sales
                 .Where(sales => sales.SaleDate.Value.Date > saleDate.Date && 
                                 sales.ShipCountry == shipCountry)

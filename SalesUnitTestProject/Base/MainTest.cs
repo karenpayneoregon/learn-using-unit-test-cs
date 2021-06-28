@@ -17,7 +17,7 @@ namespace SalesUnitTestProject
         [TestInitialize]
         public void Initialization()
         {
-            if (TestContext.TestName == nameof(TestMethod1))
+            if (TestContext.TestName == nameof(SalesLastWeekByCountryCode))
             {
                 // TODO
             }
@@ -29,7 +29,7 @@ namespace SalesUnitTestProject
         [TestCleanup]
         public void TestCleanup()
         {
-            if (TestContext.TestName == nameof(TestMethod1))
+            if (TestContext.TestName == nameof(SalesLastWeekByCountryCode))
             {
                 // TODO
             }

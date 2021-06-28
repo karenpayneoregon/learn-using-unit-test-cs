@@ -15,6 +15,7 @@ This Visual Studio solution discuss
 - [Testing tools](https://docs.microsoft.com/en-us/visualstudio/test/?view=vs-2019) in Visual Studio
   - Unit test [basics](https://docs.microsoft.com/en-us/visualstudio/test/unit-test-basics?view=vs-2019)
   - Isolate code under test with [Microsoft Fakes](http://example.com)
+  - Create unit test method [stubs from code](https://docs.microsoft.com/en-us/visualstudio/test/create-unit-tests-menu?view=vs-2019)
 - Visual Studio [productivity guide](https://docs.microsoft.com/en-us/visualstudio/ide/csharp-developer-productivity?view=vs-2019) for C# developers
 - TechNet Wiki [C# object comparisons basics](https://social.technet.microsoft.com/wiki/contents/articles/53309.c-object-comparisons-basics.aspx)
 - Custom project templates [repository](https://github.com/karenpayneoregon/vs2019-custom-project-templates)

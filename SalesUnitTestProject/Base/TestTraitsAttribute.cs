@@ -11,6 +11,7 @@ namespace SalesUnitTestProject.Base
         /// Place holder 
         /// </summary>
         PlaceHolder,
+        SalesQueries
     }
     /// <summary>
     /// Declarative class for using Trait enum about for traits on test method.
