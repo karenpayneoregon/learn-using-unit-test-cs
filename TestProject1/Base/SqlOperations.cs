@@ -7,6 +7,15 @@ using System.Threading.Tasks;
 
 namespace TestProject1.Base
 {
+    /// <summary>
+    /// Provides methods to assist in validating in unit test methods.
+    /// * Zero exception handling, if errors they will be flushed out by testing.
+    /// * No query formatting, queries are built in SSMS and pasted in 'as is'
+    /// </summary>
+    /// <remarks>
+    /// Requires
+    /// https://gist.github.com/karenpayneoregon/40a6e1158ff29819286a39b7f1ed1ae8
+    /// </remarks>
     public class SqlOperations
     {
         protected static string _connectionString => "Server=.\\SQLEXPRESS;Database=NorthWind2020;Integrated Security=true";
@@ -19,7 +28,7 @@ namespace TestProject1.Base
             using var cmd = new SqlCommand
             {
                 Connection = cn, 
-                CommandText = "SELECT C.[Name], COUNT(C.Name) AS CountryCount FROM Customers AS Cust INNER JOIN Countries AS C ON Cust.CountryIdentifier = C.CountryIdentifier GROUP BY C.[Name] ORDER BY C.[Name];"
+                CommandText = "SELECT C.[Name], COUNT(C.[Name]) AS CountryCount FROM Customers AS Cust INNER JOIN Countries AS C ON Cust.CountryIdentifier = C.CountryIdentifier GROUP BY C.[Name] ORDER BY C.[Name];"
             };
 
             cn.Open();

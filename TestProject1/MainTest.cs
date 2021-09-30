@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using CustomersLibrary;
 using CustomersLibrary.Classes;
 using CustomersLibrary.ComparerHelpers;
 using CustomersLibrary.Comparers;
@@ -22,7 +23,7 @@ namespace TestProject1
         /// </summary>
         [TestMethod]
         [TestTraits(Trait.Distinct)]
-        public void Distinct_By_CompanyName()
+        public void Customers_Distinct_By_CompanyName()
         {
             List<Customers> customerList = CustomerOperations.ReadCustomers().Take(5).ToList();
 
@@ -109,8 +110,10 @@ namespace TestProject1
         /// </remarks>
         [TestMethod]
         [TestTraits(Trait.GroupBy)]
-        public void CustomersGroupByCountryIdentifierStrongTyped()
+        public void Customers_GroupByCountryIdentifierStrongTyped()
         {
+            var names = new List<string>() { "Denmark", "Germany" };
+            var countryIdentifierList = new List<int>() { 6, 9 };
             List<Customers> customers = CustomerOperations.ReadCustomers();
             List<CountryGrouped> stronglyGrouped = customers
                 .GroupBy((customer) => customer.CountryIdentifier)
@@ -118,8 +121,10 @@ namespace TestProject1
                 {
                     Count = @group.Count(),
                     List = @group.ToList(),
-                    CountryName = CustomerOperations.CountryList.FirstOrDefault(country => country.CountryIdentifier == @group.Key).Name
+                    CountryName = CustomerOperations.CountryList.FirstOrDefault(country => country.CountryIdentifier == @group.Key).Name,
+                    CountryIdentifier = CustomerOperations.CountryList.FirstOrDefault(country => country.CountryIdentifier == @group.Key).CountryIdentifier
                 })
+                .Where(x => countryIdentifierList.Contains(x.CountryIdentifier))
                 .OrderBy(countryGrouped => countryGrouped.CountryName)
                 .ToList();
 
@@ -138,7 +143,7 @@ namespace TestProject1
                 }
             }
 
-            Assert.IsTrue(stronglyGrouped.Count == 20);
+            //Assert.IsTrue(stronglyGrouped.Count == 20);
         }
 
 
@@ -156,7 +161,7 @@ namespace TestProject1
         /// </remarks>
         [TestMethod]
         [TestTraits(Trait.GroupBy)]
-        public void CustomersGroupByCountryIdentifierAnonymous()
+        public void Customers_GroupByCountryIdentifierAnonymous()
         {
             List<Customers> customers = CustomerOperations.ReadCustomers();
             
@@ -193,7 +198,7 @@ namespace TestProject1
         /// </summary>
         [TestMethod]
         [TestTraits(Trait.SqlRead)]
-        public void TempTest()
+        public void SqlClientDataReaderTest()
         {
             SqlOperations.CountryCountDictionary();
         }
@@ -261,6 +266,9 @@ namespace TestProject1
         }
 
         #endregion
+
+
+
 
     }
 }

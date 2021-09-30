@@ -16,5 +16,7 @@ namespace CustomersLibrary.Classes
         /// Country name from country identifier
         /// </summary>
         public string CountryName { get; set; }
+
+        public int CountryIdentifier { get; set; }
     }
 }
